@@ -1,10 +1,9 @@
-#include "muons/muons.cpp"
+#include "muons/muons_pad.cpp"
 
-void gen_muons(){
+void gen_muons_pad(int N){
 
-  Int_t N        = 1000;
   Int_t numFiles = 1;
-  Int_t seed     = 20191001;
+  Int_t seed     = 20191029;
   Int_t localseed;
   
   TString fileName   = "muons_130k_";
