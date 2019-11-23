@@ -215,7 +215,7 @@ void AngraDetectorConstruction::ConstructMaterials()
 
     binName = "AbsLength_";
     binName += num.str();        
-    WaterAbsLength->InsertValues(binEn,AngraConstantMgr::Instance().GetValue(binName)*m);
+    WaterAbsLength->InsertValues(binEn,AngraConstantMgr::Instance().GetValue(binName)*0.1*m);
   }
 
   G4MaterialPropertiesTable* OpWaterProperties = new G4MaterialPropertiesTable();

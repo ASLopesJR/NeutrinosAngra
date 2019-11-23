@@ -98,7 +98,7 @@ bool write = false;
     TVector3  momentum3d; // y is vertical, x and z horizonthal 
     TVector3  position;
     Double_t  momentum, ltheta, phi, initX,initY,initZ, muonEnergy;
-    Double_t  h_det, h_s1, h_s2, t_s1, t_s2, px_s1, px_s2, pz_s1, pz_s2;
+    Double_t  h_det, h_s1, h_s2, t_s1, t_s2, px_s1, px_s2, pz_s1, pz_s2, l_scint;
   
   
   for(;ievent<MAXEVENTS; ievent++){
@@ -127,9 +127,10 @@ bool write = false;
         muonEnergy = sqrt(momentum*momentum+muonMass*muonMass);
 
         h_det = 835 + 2*142;
+        l_scint = 200;
 
-        h_s1 =  h_det + 45;
-        h_s2 = h_det + 475;
+        h_s1 =  h_det + 57.5;
+        h_s2 = h_s1 + 382.5;
 
         t_s1 = (h_s1-position.Y()*1000)/momentum3d.Y();
         t_s2 = (h_s2-position.Y()*1000)/momentum3d.Y();
@@ -139,8 +140,8 @@ bool write = false;
         pz_s1 = momentum3d.Z()*t_s1 + position.Z()*1000;
         pz_s2 = momentum3d.Z()*t_s2 + position.Z()*1000;
 
-   if( px_s1 >= -700 && px_s1 <= 700 && t_s1 > 0 && px_s2 >= -700 && px_s2 <= 700 && t_s2 > 0){
-      if(pz_s1 >= -700 && pz_s1 <= 700 && pz_s2 >= -700 && pz_s2 <= 700 ){
+   if( px_s1 >= -l_scint && px_s1 <= l_scint && t_s1 > 0 && px_s2 >= -l_scint && px_s2 <= l_scint && t_s2 > 0){
+      if(pz_s1 >= -l_scint && pz_s1 <= l_scint && pz_s2 >= -l_scint && pz_s2 <= l_scint ){
           write = true;
       }
    }
